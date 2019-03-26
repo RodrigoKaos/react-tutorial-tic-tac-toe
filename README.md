@@ -1,4 +1,4 @@
-** First React App **
+# First React App
 
 Tutorial from: [https://reactjs.org/tutorial/tutorial.html](https://reactjs.org/tutorial/tutorial.html)
 
