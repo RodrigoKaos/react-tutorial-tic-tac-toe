@@ -9,7 +9,8 @@ class Game extends React.Component {
         squares: Array(9).fill(null)
       }],
       stepNumber: 0,
-      xIsNext: true
+      xIsNext: true,
+      sort: true
     };
   }
 
@@ -68,24 +69,31 @@ class Game extends React.Component {
     return null;
   }
 
+  toggleSort(){
+    this.setState({
+      sort: !this.state.sort
+    });
+  }
+
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = this.calculateWinner(current.squares);
-
-    const moves = history.map((step, move) => {
+    
+    
+    let moves = history.map((step, move) => {
       
       let messase0 = 'Go to game start';
       let messase1 = `Go to move #${move} collumn:${step.collumn} row:${step.row}`;      
       let desc = move ? messase1 : messase0;
       
-
+      
       return (
         <li key={move}>
           <button
             className={move === this.state.stepNumber ? 'bold': ''} 
             onClick={() => this.jumpTo(move) 
-          }>
+            }>
             {desc}
           </button>
         </li>
@@ -109,7 +117,8 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <button onClick={() => this.toggleSort()}>Sort</button>
+          <ol>{this.sort ? moves : moves.reverse()}</ol>
         </div>
       </div>
     );
