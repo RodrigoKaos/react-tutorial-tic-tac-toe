@@ -52,3 +52,7 @@ ol, ul {
 .bold {
   font-weight: bold;
 }
+
+.square-green {
+  background: green;
+}

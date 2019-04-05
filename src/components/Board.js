@@ -2,11 +2,20 @@ import React from 'react';
 import Square from './Square';
 
 class Board extends React.Component {
+  
   renderSquare(i) {
+    const winnerClass = this.props.winnerSquares && 
+                        (this.props.winnerSquares[0] === i ||
+                        this.props.winnerSquares[1] === i ||
+                        this.props.winnerSquares[2] === i ) 
+                        ? 'square-green'
+                        : '';
+    console.log(winnerClass, this.props.winnerSquares, i);
     return (
       <Square
         key={i}
         value={this.props.squares[i]}
+        winnerClass={winnerClass}
         onClick={() => this.props.onClick(i)}
       />
     );
