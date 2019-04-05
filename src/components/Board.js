@@ -10,7 +10,7 @@ class Board extends React.Component {
                         this.props.winnerSquares[2] === i ) 
                         ? 'square-green'
                         : '';
-    console.log(winnerClass, this.props.winnerSquares, i);
+                        
     return (
       <Square
         key={i}
